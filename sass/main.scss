@@ -1,0 +1,134 @@
+@import 'compass';
+
+body {
+  //  overflow: hidden
+  @include clearfix;
+  position: relative;
+  background-color: #000000;
+}
+$cartoon-profile-margin: 20px;
+$cartoon-profile-padding: 4px;
+$cartoon-profile-width: 54px;
+$cartoon-profile-height: 54px;
+
+.main-menu {
+  position: absolute;
+  top: -120%;
+  left: 0;
+  background-color: rgba(0, 0, 0, .4);
+  z-index: 100;
+  & h1 {
+    margin-left: $cartoon-profile-margin;
+    margin-top: $cartoon-profile-height + $cartoon-profile-margin + 20;
+    color: #F8F7FC;
+  }
+}
+.cartoon-profile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include border-radius(50%);
+  background-color: white;
+  width: $cartoon-profile-width;
+  height: $cartoon-profile-height;
+  margin: $cartoon-profile-margin;
+  padding: $cartoon-profile-padding;
+  cursor: pointer;
+  @include box-shadow(0px 0px 3px #ffffff);
+  z-index: 500;
+  & img {
+    width: 48px;
+    height: 48px;
+    @include border-radius(50%);
+  }
+}
+.fit-to-window {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: none;
+}
+.welcome-screen {
+  background-color: #0F222E;
+  position: absolute;
+  top: 0%;
+  z-index: 10;
+}
+
+.social-btn-container {
+  position: absolute;
+  margin: 50px 50px;
+  top: 0;
+  right: 0;
+  & div {
+    display: inline-block;
+    @include border-radius(50%);
+    cursor: pointer;
+  }
+  & div img {
+    width: 46px;
+    height: 46px;
+    margin: 5px 5px;
+  }
+}
+
+.JMN-logo-btn {
+  position: absolute;
+  margin: 10px;
+  top: 0;
+  left: 0;
+}
+#scroll-down {
+  position: absolute;
+  margin: 40px 0px;
+  bottom: 0px;
+}
+
+/* loader */
+
+
+$animation-name: pound;
+@include keyframes($animation-name) {
+  to {
+    @include transform(scale(1.8));
+    @include box-shadow(1px 2px 3px 0 rgba(0, 0, 0, 0.65), 2px 6px 12px 0 rgba(0, 0, 0, 0.5), 3px 8px 15px 0 rgba(0, 0, 0, 0.45));
+  }
+}
+
+ul.loader{
+  display: block;
+  position: relative;
+  width: 11em;
+  margin: 45vh auto;
+
+  & li {
+    list-style: none;
+    display: block;
+    @include float(left);
+    width: 0.8em;
+    height: 3em;
+    margin: 0 0.7em 0 0;
+
+    background: #635863;
+    @include background-image(linear-gradient(to bottom, #635863 0%, #3d353b 100%));
+    @include box-shadow(2px 2px 1px 0 rgba(0, 0, 0, 0.5), 1px 1px 1px 0 rgba(0, 0, 0, 0.9), 1px 1px 10px 0 rgba(0, 0, 0, 0.5));
+    @include animation($animation-name 1.4s ease-in-out infinite alternate);
+    @include animation-delay(0s);
+    @include transform-origin(center);
+  }
+
+  & li:nth-child(2) {
+    @include animation-delay(.3s);
+  }
+
+  & li:nth-child(3) {
+    @include animation-delay(.6s);
+  }
+
+  & li:nth-child(4) {
+    @include animation-delay(.9s);
+  }
+
+  & li:nth-child(5) {
+    @include animation-delay(1.3s);
+  }
+}
